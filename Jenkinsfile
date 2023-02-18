@@ -21,5 +21,16 @@ pipeline {
                 }
             }
         }
+        stage('Push Docker Image'){
+            when{
+            branch 'master'
+            }
+            steps{
+            withDockerRegistry(credentialsId: 'Docker_hub', url: ' https://registry.hub.docker.com') {
+                app.push("${env.BUILD_NUMBER}")
+                app.push("latest")
+            }
+            }
+        }
     }
 }
