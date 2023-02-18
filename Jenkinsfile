@@ -26,10 +26,10 @@ pipeline {
             branch 'master'
             }
             steps{
-            withDockerRegistry(credentialsId: 'Docker_hub', url: ' https://registry.hub.docker.com') {
-                app.push("${env.BUILD_NUMBER}")
-                app.push("latest")
-            }
+                docker.withRegistry(' https://registry.hub.docker.com','Docker_hub'){
+                    app.push("${env.BUILD_NUMBER}")
+                    app.push("latest")
+                }
             }
         }
     }
