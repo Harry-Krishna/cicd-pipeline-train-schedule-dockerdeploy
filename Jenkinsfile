@@ -26,7 +26,7 @@ pipeline {
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'Docker_hub', url:  'https://registry.hub.docker.com') {
-                    app.push("latest")
+                    sh "docker push harry0521/trainscheduledeployement:latest"
                     }
                 }
             }
