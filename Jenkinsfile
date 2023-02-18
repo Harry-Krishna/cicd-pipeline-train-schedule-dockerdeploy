@@ -14,7 +14,7 @@ pipeline {
             }
             steps{
                 script{
-                app = docker.build("docker.io/harry0521/trainscheduledeployement")
+                app = docker.build("harry0521/trainscheduledeployement")
                 sh 'echo $(curl localhost:8080)'
                     }
                 }
@@ -26,7 +26,7 @@ pipeline {
             steps{
                 script{
                     withDockerRegistry(credentialsId: 'Docker_hub', url:  'https://registry.hub.docker.com') {
-                    app.push("${env.BUILD_NUMBER}")
+                    app.push("${env}")
                     app.push("latest")
                     }
                 }
