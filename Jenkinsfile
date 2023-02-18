@@ -15,11 +15,10 @@ pipeline {
             steps{
                 script{
                 app = docker.build("docker.io/harry0521/trainscheduledeployement")
-                    sh 'echo $(curl localhost:8080)'
+                sh 'echo $(curl localhost:8080)'
                     }
                 }
             }
-        }
         stage('Push Docker Image'){
             when{
             branch 'master'
