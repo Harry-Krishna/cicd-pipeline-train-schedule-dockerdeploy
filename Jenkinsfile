@@ -29,6 +29,7 @@ pipeline {
                 script{
                     withDockerRegistry(credentialsId: 'Docker_hub', url:  'https://registry.hub.docker.com') {
                     app.push("${env:v1}")
+                        app.push("harry0521/deployement:v1")
                     }
                 }
             }
