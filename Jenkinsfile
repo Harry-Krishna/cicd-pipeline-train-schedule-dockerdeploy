@@ -25,8 +25,9 @@ pipeline {
             when{
             branch 'master'
             }
-            steps{
-                docker.withRegistry(' https://registry.hub.docker.com','Docker_hub'){
+            step{
+                script{
+                     docker.withRegistry(' https://registry.hub.docker.com','Docker_hub'){
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
                 }
